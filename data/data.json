@@ -1,0 +1,107 @@
+{
+    "data": {
+        "pageNum": 1,
+        "pageSize": 10,
+        "size": 3,
+        "startRow": 0,
+        "endRow": 2,
+        "total": 3,
+        "pages": 1,
+        "list": [
+            {
+                "id": 1,
+                "title": "666",
+                "publisher": "教务处",
+                "publishtime": "2020年02月2日 18时16分10秒",
+                "content": "5555",
+                "url": null
+            },
+            {
+                "id": 2,
+                "title": "测试下",
+                "publisher": "教务处",
+                "publishtime": "2020年01月31日 18时16分10秒",
+                "content": "是不是可以？",
+                "url": null
+            },
+            {
+                "id": 3,
+                "title": "论文公告",
+                "publisher": "政教处",
+                "publishtime": "2020年01月30日 18时16分10秒",
+                "content": "开学报到",
+                "url": null
+            },
+            {
+                "id": 4,
+                "title": "666",
+                "publisher": "教务处",
+                "publishtime": "2020年02月2日 18时16分10秒",
+                "content": "5555",
+                "url": null
+            },
+            {
+                "id": 5,
+                "title": "测试下",
+                "publisher": "教务处",
+                "publishtime": "2020年01月31日 18时16分10秒",
+                "content": "是不是可以？",
+                "url": null
+            },
+            {
+                "id": 6,
+                "title": "论文公告",
+                "publisher": "政教处",
+                "publishtime": "2020年01月30日 18时16分10秒",
+                "content": "开学报到",
+                "url": null
+            },
+            {
+                "id": 7,
+                "title": "666",
+                "publisher": "教务处",
+                "publishtime": "2020年02月2日 18时16分10秒",
+                "content": "5555",
+                "url": null
+            },
+            {
+                "id": 8,
+                "title": "测试下",
+                "publisher": "教务处",
+                "publishtime": "2020年01月31日 18时16分10秒",
+                "content": "是不是可以？",
+                "url": null
+            },
+            {
+                "id": 9,
+                "title": "论文公告",
+                "publisher": "政教处",
+                "publishtime": "2020年01月30日 18时16分10秒",
+                "content": "开学报到",
+                "url": null
+            },
+            {
+                "id": 10,
+                "title": "论文公告",
+                "publisher": "政教处",
+                "publishtime": "2020年01月30日 18时16分10秒",
+                "content": "开学报到",
+                "url": null
+            }
+        ],
+        "prePage": 0,
+        "nextPage": 0,
+        "isFirstPage": true,
+        "isLastPage": true,
+        "hasPreviousPage": false,
+        "hasNextPage": false,
+        "navigatePages": 8,
+        "navigatepageNums": [
+            1
+        ],
+        "navigateFirstPage": 1,
+        "navigateLastPage": 1,
+        "firstPage": 1,
+        "lastPage": 1
+    }
+}

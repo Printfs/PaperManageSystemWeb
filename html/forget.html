@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>毕业设计管理系统</title>
+		<link href="../css/common.css" rel="stylesheet">
+		<link href="../css/pass-reset.css" rel="stylesheet">
+
+	</head>
+	<body>
+		<div class=header-simple>
+			<div class=w><a href="../index.html" class=logo style="color: #f40;">返回主页</a></div>
+		</div>
+		<div class="user-wrap">
+			<div class="user-con w">
+				<div class="user-title">找回密码</div>
+				<div class="user-box">
+					<div id="error" style="margin-left: 150px;">
+					</div>
+					<div class="step-con step-username" id="div1">
+						<p class="user-item-text">请输入你需要找回登录密码的账户名：</p>
+						<div class="user-item">
+							<label class="user-label" for="username"><i class="fa fa-user"></i></label>
+							<input type="text" class="user-content" placeholder="学号" autocomplete="off" />
+						</div>
+						<a class="user-btn" id="submit-username" onclick="next()">下一步</a>
+					</div>
+					<div class="step-con step-question" id="div2" style="display: none">
+						<p class="user-item-text">您的email为: <span id="question" style="color: red;">
+								</span</p> <p class="user-item-text">验证码将会发送至您的邮箱，请及时查收</p>
+						<p style="margin-left: 30px;" id="daojishi"></p>
+						<!-- <div class="user-item">
+							<label class="user-label" for="answer"><i class="fa fa-key"></i></label>
+							<input type="text" class="user-content" id="answer" placeholder="请输入验证码" autocomplete="off" />
+						</div> -->
+						<a class="user-btn" id="submit-question" onclick="send()">发送验证码</a>
+					</div>
+					<div class="step-con step-password" style="display: none" id="div3">
+						<p class="user-item-text">请输入验证码: </p>
+						<p class="user-item-text" id="rr" style="color: red;position: absolute;"></p>
+
+						<button style="margin-left: 300px;margin-bottom: 5px;" id="again" onclick="againsendcode()">再次发送</button>
+						<div class="user-item">
+							<label class="user-label" for="password"><i class="fa fa-lock"></i></label>
+							<input type="text" class="user-content" id="code" placeholder="请输入验证码" autocomplete="off" />
+						</div>
+						<a class="user-btn" id="submit-password" onclick="nextIsUpdatePassword()">下一步</a>
+					</div>
+					<div class="step-con step-password" style="display: none" id="div4">
+						<p class="user-item-text">请输入新密码：</p>
+
+						<p class="user-item-text" id="rr"></p>
+						<div class="user-item">
+							<label class="user-label" for="password"><i class="fa fa-lock"></i></label>
+							<input type="password" class="user-content" id="password" placeholder="请输入新密码" autocomplete="off" />
+						</div>
+						<a class="user-btn" id="submit-password" onclick="updatePassword()">提交</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class=footer>
+		</div>
+
+		<script type="text/javascript">
+			var email;
+
+			function next() {
+				var snumber = $(".user-content").val();
+
+
+				$.ajax({
+					url: 'http://localhost:8023/stu/forget_password',
+					type: 'GET',
+					data: $.param({
+						snumber: snumber,
+					}),
+					success: function(result) {
+						// alert(result.status);
+						if (result.status == 0) {
+							//成功
+							document.getElementById("div1").style.display = 'none';
+							document.getElementById("div2").style.display = 'block';
+							document.getElementById("question").innerText = result.data;
+
+							question = result.data;
+							email = result.data;
+
+							//延迟
+							// setTimeout("sendcode()", 400)
+
+
+						}
+						//失败
+						document.getElementById("error").innerText = result.msg;
+						document.getElementById("error").style.color = 'red';
+					}
+				});
+
+
+
+			}
+
+			function sendcode() {
+				$.ajax({
+					url: 'http://localhost:8023/stu/send_security_code',
+					type: 'GET',
+					data: $.param({
+						email: email,
+					}),
+					success: function(result) {
+						alert("验证码已发送，3分钟有效")
+					}
+				});
+			}
+
+			function send() {
+				document.getElementById("div1").style.display = 'none';
+				document.getElementById("div2").style.display = 'none';
+				document.getElementById("div3").style.display = 'block';
+				//发送验证码
+				sendcode();
+				//设置不能点击
+				document.getElementById("again").setAttribute("disabled", true);
+				document.getElementById("again").style.background = '#e1e1e1ff'
+				daojishi();
+			}
+
+
+			var t = 180;
+
+			function daojishi() {
+				if (t >= 0) {
+					document.getElementById("rr").innerText = "再次发送 " + t + " 秒";
+					t = t - 1;
+					//递归每秒调用countTime方法，显示动态时间效果  
+					setTimeout(daojishi, 1000);
+				}
+				if (t < 0) {
+					document.getElementById("rr").innerText = "";
+					document.getElementById("again").removeAttribute("disabled");
+					document.getElementById("again").removeAttribute("background")
+				}
+			}
+
+			// 再次发送
+			function againsendcode() {
+				t = 180;
+				daojishi();
+				document.getElementById("again").setAttribute("disabled", true);
+			}
+
+
+			function nextIsUpdatePassword() {
+				var code = $("#code").val();
+				$.ajax({
+					url: 'http://localhost:8023/stu/input_code',
+					type: 'POST',
+					data: $.param({
+						email: email,
+						code: code
+					}),
+					success: function(result) {
+
+						if (result.status == 0) {
+							document.getElementById("div1").style.display = 'none';
+							document.getElementById("div2").style.display = 'none';
+							document.getElementById("div3").style.display = 'none';
+							document.getElementById("div4").style.display = 'block';
+						} else {
+							$("#code").val(result.msg);
+						}
+
+					}
+				});
+			}
+			//修改密码
+			function updatePassword() {
+				var password = $("#password").val();
+				$.ajax({
+					url: 'http://localhost:8023/stu/NoLogin_update_password',
+					type: 'POST',
+					data: $.param({
+						email: email,
+						newpassword: password
+					}),
+					success: function(result) {
+						if (result.status == 0) {
+							alert("修改成功，3秒后返回首页");
+							// setTimeout("sendcode()", 400)
+							setInterval(go, 1000);
+						}
+					}
+				});
+			}
+			var x = 3;
+
+			function go() {
+				x--;
+				if (x == 0) {
+					window.location.href = "../news/index.html";
+				}
+			}
+		</script>
+	</body>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</html>

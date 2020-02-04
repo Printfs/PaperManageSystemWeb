@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>毕业设计管理系统</title>
+    <link rel="stylesheet" href="./css/newsList.css">
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font: 12px/1.8 Arial;
+            color: #666;
+        }
+
+        h1.tit-h1 {
+            font-size: 38px;
+            text-align: center;
+            margin: 30px 0 15px;
+            color: #f60;
+        }
+
+        .go-back {
+            text-align: center;
+            border-top: 1px dashed #ccc;
+            padding: 10px;
+            margin-top: 20px;
+            font-size: 40px;
+        }
+
+        .wrap {
+            width: 500px;
+            margin: 0 auto;
+            border: 1px dashed #ccc;
+            background: #f8f8f8;
+            padding: 20px;
+        }
+
+        #news_rolling {
+            height: 96px;
+            overflow: hidden;
+        }
+
+        #news_rolling li {
+            line-height: 24px;
+            height: 24px;
+            border-bottom: 1px #CCCCCC dashed;
+        }
+
+        a {
+            text-decoration: none;
+            color: #666666;
+            float: left;
+            margin-right: 15px;
+        }
+
+        body,
+        ul,
+        ol,
+        h2,
+        h3,
+        h4,
+        h5,
+        p,
+        dl,
+        dt,
+        dd,
+        form {
+            padding: 0;
+            margin: 0;
+        }
+
+        img {
+            border: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            outline: none;
+            color: #666666;
+        }
+
+        a:hover {
+            text-decoration: none
+        }
+
+        img {
+            border: 0
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        label {
+            color: #6CBD45;
+            font-size: 14px;
+            font-weight: bold;
+            padding-bottom: 0.5em;
+            margin: 0;
+        }
+
+        .h3 {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+
+        #meun {
+            color: #fff;
+            padding-left: 10px;
+			width: 100%;
+        }
+
+        #meun img {
+            float: left;
+        }
+
+        #submeun {
+            margin-left: 70px;
+            float: left;
+        }
+
+        #submeun span {
+            text-align: center;
+            margin-right: 10px;
+            /* float: left; */
+            display: inline;
+        }
+
+        #submeun span a {
+            color: #fff;
+            height: 50px;
+            line-height: 50px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            padding-left: 15px;
+            padding-right: 15px;
+            display: block;
+        }
+
+        #submeun span.cur {
+            text-align: center;
+            background: #82ce18;
+            margin-right: 10px;
+            float: left;
+            display: inline;
+        }
+
+        #top {
+            background-color: #bc2626;
+            margin: 0em 0 10px 0em;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #E5E5E5;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        label.subtitle {
+            font-size: 13px;
+            float: right;
+            color: #6CBD45;
+            margin: 0 10px;
+            text-align: right;
+        }
+
+        h1.title {
+            height: 50px;
+            font-size: 12px;
+            background: url(logo.png) no-repeat;
+        }
+
+        h1.title a:link,
+        h1.title a:visited,
+        h1.title a:hover {
+            color: #000;
+            text-decoration: none;
+        }
+
+        #news_rolling {
+            height: 195px;
+        }
+    </style>
+</head>
+
+<body background="" style="background-repeat: no-repeat;background-size: 100%;width: 100%;">
+    <div id="top">
+
+        <div id="meun">
+            <div id="submeun">
+                <span class="gun">滚动新闻：</span>
+                <marquee behavior="scroll" direction="left">西安工程大学              毕业设计论文管理系统</marquee>
+                <!-- <span class="cur"><a href="javascript:void(0)">毕业设计论文管理系统</a></span> -->
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+
+        <div class="con">
+            <!-- newList -->
+            <div class="newList">
+                <h2 class="newsTitle">论文最新公告列表</h2>
+                <span class="msg"></span>
+                <div class="newList-con">
+                    <ul class="showSection">
+                        <li class="tpl">
+                            <a href="#" target="_blank">
+                                <span class="title">
+
+                                </span>
+                                <span class="publisher">
+
+                                </span>
+                                <span class="publishTime">
+
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="newsUnder">
+                        <span class="page reduce zero">上一页</span>
+                        <span class="page add">下一页</span>
+                    </div>
+                </div>
+            </div>
+            <!-- newList end -->
+            <!-- login -->
+            <div class="login">
+                <p class="login-title">账号登录
+                </p>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            
+                            <!-- Sign Up Form -->
+                            <div class="form-container">
+                                <form id="logInForm" data-toggle="validator" data-focus="false">
+                                    <div class="form-group">
+                                        <span class="cover">学号不能为空*</span>
+                                        <input type="text" id="studentNum" required>
+                                        <label for="studentNum">请输入学号</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <span class="cover">密码不能为空*</span>
+                                        <input type="password" id="password" required>
+                                        <label for="password">请输入密码</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <span class="error">
+                                            
+                                        </span>
+                                        <input type="button" class="loginBtn" value="登录">
+                                    </div>
+                                    <div class="form-message">
+                                        <div id="lmsgSubmit" class="h3 text-center hidden"></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div> <!-- end of col -->
+                    </div> <!-- end of row -->
+					<a href="html/forget.html" style="margin-left: 250px;"/>忘记密码
+            </div>
+            <!-- login end -->
+        </div>
+    </div>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="./js/newList.js"></script>
+
+</body>
+
+</html>

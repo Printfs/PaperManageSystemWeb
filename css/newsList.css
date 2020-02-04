@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    top: 0;
+    text-decoration: none;
+    list-style: none;
+}
+.wrapper {
+    width: 100%;
+    min-width: 1200px;
+}
+.wrapper .con {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+}
+.wrapper .con .newList .wrap {
+    margin: 0;
+}
+.newList .showSection {
+    height: 410px;
+}
+/* newList */
+#top {
+    height: 25px !important;
+    line-height: 25px !important;
+}
+span.gun {
+    vertical-align: top;
+}
+marquee {
+    width: 80%;
+}
+#submeun {
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+}
+.tpl {
+    display: none;
+}
+.newList .newsTitle {
+    color: #000;
+    font-size: 20px;
+    font-weight: bolder;
+    margin-left: 40px;
+    margin-bottom: -10px;
+}
+.newList .msg {
+    margin-left: 40px;
+}
+.newList .newList-con {
+    height: 475px;
+    width: 500px;
+    margin-top: 10px;
+    border: 1px solid #aaa;
+    overflow: hidden;
+    padding: 10px 9px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, .5);
+}
+.newList li {
+    position: relative;
+    border-bottom: 1px dashed #aaa;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+}
+.newList li span {
+    font-size: 13px;
+}
+.newList li span.publishTime {
+    position: absolute;
+    right: 10px;
+}
+.newList li span.publisher {
+    position: absolute;
+    left: 180px;
+}
+.newList .newsUnder {
+    margin-top: 20px;
+}
+.newList .newsUnder .add {
+    float: right;
+}
+.newList .newsUnder .page {
+    margin: 0 20px;
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+    color: #fff;
+    background: cornflowerblue;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.newList .newsUnder .page.zero {
+    background: #aaa;
+}
+
+/* login */
+.login {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    width: 400px;
+    padding: 0 40px 20px 40px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.form-container {
+    margin: 0 40px 10px 40px;
+}
+
+.login-title {
+    margin-left: -40px;
+    width: 400px;
+    height: 40px;
+    background: #abc;
+    line-height: 40px;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+
+.form-group {
+    position: relative;
+    margin-bottom: 30px !important;
+}
+.form-group input {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    text-indent: 10px;
+    outline: none;
+}
+.form-group label {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-45%);
+    font-size: 14px;
+    color: #aaa;
+    font-weight: 400;
+}
+.form-group .cover,
+.form-group .error {
+    display: none;
+    position: absolute;
+    top: -25px;
+    font-size: 12px;
+    color: #f00;
+    left: 10px;
+}
+
+.loginBtn {
+	width: 100%;
+	padding: 6px 0;
+	background-color: #5f4dee;
+	border-radius: 10px;
+	outline: none;
+	color: #fff;
+}

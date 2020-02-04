@@ -1,0 +1,12 @@
+ {
+    "error": {
+        "status": 1,
+        "msg": "密码错误",
+        "data": null
+    },
+    "success": {
+        "status": 0,
+        "msg": "登陆成功",
+        "data": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0MTYwMzAzMDIxOCIsInJvbGVzIjoidXNlciIsImlhdCI6MTU4MDcyMjUxNCwiZXhwIjoxNTgwNzIzNzE0fQ.zTw67rUXt5RmyyEihqx3bseePYFp_z_nZT2aRpoNg2k"
+    }
+}
