@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Notice Pushlish</title>
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+    <!-- <link href="../css/dropzone.min.css" rel="stylesheet" type="text/css" /> -->
+    <link rel="stylesheet" href="../css/dropzone.min.css"/>
+    <link rel="stylesheet" href="../css/basic.min.css"/>
+</head>
+<style type="text/css">
+    body {
+        font-size: 14px;
+    }
+
+    input {
+        vertical-align: middle;
+        margin: 0;
+        padding: 0
+    }
+
+    .file-box {
+        position: relative;
+        width: 340px;
+        margin-top: 20px;
+    }
+</style>
+<body>
+<form method="get">
+    <p><span style="margin-left: 500px;font-weight: 700;font-size: larger;">公告标题:</span>
+        <input type="text" id="temp" name="title"
+               style="border: 2px solid #c2cad8;width:400px;height: 30px;background-color: #fff;border-radius: 4px"/>
+    </p>
+    <!-- 加载编辑器的容器 -->
+    <script id="container" name="text" type="text/plain">
+				公告内容
+
+
+
+
+
+
+    </script>
+</form>
+
+
+<div id="dropz" class="dropzone"
+     style="float: left;width: 140px;height: 20px;border: 2px dashed dodgerblue;border-radius: 10px;"></div>
+<div style="margin-left: 700px ;margin-top: 30px;">
+    <button type="button" onclick="submit()"
+            style="width: 90px;height: 70px;border-radius:10px;background-color:#1e9fffff;color: white;">发布
+    </button>
+</div>
+
+
+<!-- 配置文件 -->
+<script type="text/javascript" src="../ueditor/utf8-jsp/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="../ueditor/utf8-jsp/ueditor.all.js"></script>
+<script src="../js/jquery-3.3.1.js"></script>
+<!--upload-->
+<script src="../js/dropzone.min.js" type="text/javascript"></script>
+
+
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+    var ue = UE.getEditor('container');
+    ue.ready(function () {
+        ue.setHeight(450);
+    });
+
+
+    function cancel() {
+        window.location.href = "AdminBack.html";
+    }
+
+    var url;
+    // 默认的 Dropzone 参数
+    const defaultDropzoneOpts = {
+        url: "",
+        paramName: "dropFile",
+        maxFiles: 1, // 一次性上传的文件数量上限
+        maxFilesize: 10, // 文件大小，单位：MB
+        acceptedFiles: ".docx,.doc,.xlsx,.xls,.ppt", // 上传的类型
+        addRemoveLinks: true,
+        parallelUploads: 1, // 一次上传的文件数量
+        dictDefaultMessage: '拖动文件至此或者点击上传',
+        dictMaxFilesExceeded: "您最多只能上传 1 个文件！",
+        dictResponseError: '文件上传失败!',
+        dictInvalidFileType: "文件类型.docx,.doc,.xlsx,.xls,.ppt",
+        dictFallbackMessage: "浏览器不受支持",
+        dictFileTooBig: "文件过大上传文件最大支持",
+        dictRemoveLinks: "删除",
+        dictCancelUpload: "取消"
+    };
+
+    function initDropZone(opts) {
+        // 关闭 Dropzone 的自动发现功能
+        Dropzone.autoDiscover = false;
+        // 继承
+        $.extend(defaultDropzoneOpts, opts);
+        new Dropzone(defaultDropzoneOpts.id, defaultDropzoneOpts);
+    }
+
+    initDropZone({
+        id: "#dropz",
+        url: "http://localhost:8023/upload",
+        init: function () {
+            this.on("success", function (file, data) {
+                url = data.fileName;
+            });
+        }
+    });
+
+
+    function submit() {
+        var title = $("#temp").val();
+        var content = ue.getContent();
+        $.ajax({
+            url: 'http://localhost:8023/admin/publish_notic',
+            type: 'GET',
+            data: $.param({
+                key: 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoidXNlciIsImlhdCI6MTU4MDg5MzE0NCwiZXhwIjoxNTgwODk0MzQ0fQ._oXcITKxRniupQgZs-UQ7o6yih0b8eYeEdsCvQ_nKqE',
+                title: title,
+                content : content,
+                url : url,
+            }),
+            success: function (result) {
+                alert(result.msg)
+            }
+        })
+        ;
+
+
+    }
+
+    //upload
+</script>
+
+</body>
+</html>
